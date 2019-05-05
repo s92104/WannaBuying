@@ -1,0 +1,6 @@
+framework module Pods_WannaBuyingTests {
+  umbrella header "Pods-WannaBuyingTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
