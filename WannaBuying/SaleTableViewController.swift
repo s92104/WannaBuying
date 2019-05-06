@@ -10,6 +10,7 @@ import UIKit
 import FirebaseStorage
 
 class SaleTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+    @IBOutlet weak var imageInput: UIImageView!
     @IBOutlet weak var titleInput: UITextField!
     @IBOutlet weak var priceInput: UITextField!
     @IBOutlet weak var amountInput: UITextField!
@@ -37,8 +38,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         detailInput.resignFirstResponder()
     }
     
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    /*override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
@@ -46,7 +46,8 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 6
-    }
+    }*/
+    
     //Select Tableview
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row==0
@@ -70,12 +71,20 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     //選擇圖片
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image=info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        
+        //Filename
+        let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as! URL
+        let imageName=imageUrl.lastPathComponent
+        let storageRef=Storage.storage().reference().child(imageName)
+        //Metadata
+        let imageExtension=imageUrl.pathExtension
+        let metadata=StorageMetadata()
+        metadata.contentType="image/"+imageExtension
+        //Upload
         let uploadData=image.pngData()
-        let storageRef=Storage.storage().reference().child("test.png")
-        storageRef.putData(uploadData!,metadata: nil){(data,error) in
+        storageRef.putData(uploadData!, metadata: metadata) { (metadata, error) in
+            self.imageInput.image=image
             storageRef.downloadURL(completion: { (url, error) in
-                print(url)
+                print(url?.absoluteString)
             })
         }
         dismiss(animated: true, completion: nil)

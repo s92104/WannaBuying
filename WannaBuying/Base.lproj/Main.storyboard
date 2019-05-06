@@ -198,19 +198,21 @@
                         <connections>
                             <outlet property="dataSource" destination="3Xk-Nr-s3Q" id="uGE-Ah-nqj"/>
                             <outlet property="delegate" destination="3Xk-Nr-s3Q" id="9Pg-3Q-6LH"/>
+                            <outletCollection property="gestureRecognizers" destination="lx5-dQ-hsv" appends="YES" id="SHX-kV-bby"/>
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="賣東西" id="h4S-0U-gnn"/>
                     <connections>
                         <outlet property="amountInput" destination="VOR-X9-uFD" id="JFI-OZ-cR7"/>
                         <outlet property="detailInput" destination="HT8-oD-zNF" id="m5P-ac-uMv"/>
+                        <outlet property="imageInput" destination="Eqk-Xh-m13" id="qSx-xE-srH"/>
                         <outlet property="priceInput" destination="Sj7-SM-5yf" id="Hdk-yQ-RsR"/>
                         <outlet property="titleInput" destination="gjf-2g-Gwx" id="mCa-tH-Ksl"/>
                         <outlet property="typeInput" destination="tDg-TP-04F" id="4LP-9L-lqP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVT-nQ-XIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="lx5-dQ-hsv">
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="lx5-dQ-hsv">
                     <connections>
                         <action selector="tapBackground:" destination="3Xk-Nr-s3Q" id="cC5-N3-mZy"/>
                     </connections>
