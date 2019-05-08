@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseStorage
+import FirebaseFirestore
 
 class SaleTableViewController: UITableViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     @IBOutlet weak var imageInput: UIImageView!
@@ -16,17 +17,18 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     @IBOutlet weak var amountInput: UITextField!
     @IBOutlet weak var typeInput: UITextField!
     @IBOutlet weak var detailInput: UITextView!
+    var username=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        detailInput.layer.borderWidth=1
+        detailInput.layer.cornerRadius=8
+        detailInput.layer.borderColor=#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+        username="test"
     }
-
+    
+    //收鍵盤
     @IBAction func textDone(_ sender: UITextField) {
         sender.resignFirstResponder()
     }
@@ -37,16 +39,6 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         typeInput.resignFirstResponder()
         detailInput.resignFirstResponder()
     }
-    
-    /*override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 6
-    }*/
     
     //Select Tableview
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -90,6 +82,21 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func postCommodity(_ sender: UIButton) {
+        let db=Firestore.firestore()
+        db.collection("commodity").addDocument(data: ["username":username,"title":titleInput.text,"price":priceInput.text,"amount":amountInput.text,"remainder":amountInput.text,"type":typeInput.text,"detail":detailInput.text,"view":0])
+    }
+    
+    
+    /*override func numberOfSections(in tableView: UITableView) -> Int {
+     // #warning Incomplete implementation, return the number of sections
+     return 1
+     }
+     
+     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     // #warning Incomplete implementation, return the number of rows
+     return 6
+     }*/
     
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
