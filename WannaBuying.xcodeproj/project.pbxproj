@@ -10,7 +10,6 @@
 		05BBFA69CCB7B628C5F9EF93 /* Pods_WannaBuying.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F234894A0F458DF7F6DC3BC2 /* Pods_WannaBuying.framework */; };
 		3E05C219554A81DC7DC66265 /* Pods_WannaBuyingTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBB2CF73D6083C08F82794D2 /* Pods_WannaBuyingTests.framework */; };
 		B1090FA42275DF48003AA3DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1090FA32275DF48003AA3DD /* AppDelegate.swift */; };
-		B1090FA62275DF48003AA3DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1090FA52275DF48003AA3DD /* ViewController.swift */; };
 		B1090FA92275DF48003AA3DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1090FA72275DF48003AA3DD /* Main.storyboard */; };
 		B1090FAB2275DF4A003AA3DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1090FAA2275DF4A003AA3DD /* Assets.xcassets */; };
 		B1090FAE2275DF4A003AA3DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1090FAC2275DF4A003AA3DD /* LaunchScreen.storyboard */; };
@@ -18,6 +17,7 @@
 		B1090FC42275DF4A003AA3DD /* WannaBuyingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1090FC32275DF4A003AA3DD /* WannaBuyingUITests.swift */; };
 		B11C5F41227EFE580022FFA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B11C5F40227EFE580022FFA8 /* GoogleService-Info.plist */; };
 		B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */; };
+		B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */; };
 		B843948735C4706518195365 /* Pods_WannaBuyingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC852BF98A8E3E95DA8C823 /* Pods_WannaBuyingUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +46,6 @@
 		9FC852BF98A8E3E95DA8C823 /* Pods_WannaBuyingUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuyingUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1090FA02275DF48003AA3DD /* WannaBuying.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WannaBuying.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1090FA32275DF48003AA3DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B1090FA52275DF48003AA3DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B1090FA82275DF48003AA3DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B1090FAA2275DF4A003AA3DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1090FAD2275DF4A003AA3DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -59,6 +58,7 @@
 		B1090FC52275DF4A003AA3DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B11C5F40227EFE580022FFA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewController.swift; sourceTree = "<group>"; };
+		B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BBB2CF73D6083C08F82794D2 /* Pods_WannaBuyingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuyingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3CBA83ED5A1A24F176629 /* Pods-WannaBuyingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaBuyingTests.release.xcconfig"; path = "Target Support Files/Pods-WannaBuyingTests/Pods-WannaBuyingTests.release.xcconfig"; sourceTree = "<group>"; };
 		F234894A0F458DF7F6DC3BC2 /* Pods_WannaBuying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -129,8 +129,8 @@
 			isa = PBXGroup;
 			children = (
 				B1090FA32275DF48003AA3DD /* AppDelegate.swift */,
-				B1090FA52275DF48003AA3DD /* ViewController.swift */,
 				B1090FA72275DF48003AA3DD /* Main.storyboard */,
+				B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */,
 				B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */,
 				B1090FAA2275DF4A003AA3DD /* Assets.xcassets */,
 				B1090FAC2275DF4A003AA3DD /* LaunchScreen.storyboard */,
@@ -168,7 +168,6 @@
 				F71750198C6A73C82D25FFB4 /* Pods-WannaBuyingUITests.debug.xcconfig */,
 				70DF1A3D95B1E4A84FBB3D5B /* Pods-WannaBuyingUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -413,7 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1090FA62275DF48003AA3DD /* ViewController.swift in Sources */,
+				B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */,
 				B1090FA42275DF48003AA3DD /* AppDelegate.swift in Sources */,
 				B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */,
 			);
