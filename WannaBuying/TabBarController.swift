@@ -9,26 +9,27 @@
 import UIKit
 
 class TabBarController: UITabBarController,UITabBarControllerDelegate {
-
+    var username=""
+    var password=""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         delegate=self
-        selectedIndex=3
+        selectedIndex=2
     }
     
     func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if viewController==viewControllers?[2]
+        if username=="" && (viewController==self.viewControllers?[1] || viewController==self.viewControllers?[3] || viewController==self.viewControllers?[4])
         {
-            print("2")
+            if let vc=storyboard?.instantiateViewController(withIdentifier: "Login")
+            {
+                present(vc, animated: true, completion: nil)
+            }
         }
-        if viewController==viewControllers?[4]
-        {
-            print("4")
-        }
-        print("a")
     }
 
+    
     /*
     // MARK: - Navigation
 
