@@ -1,15 +1,15 @@
 //
-//  LoginViewController.swift
+//  SignupViewController.swift
 //  WannaBuying
 //
-//  Created by s92104 on 2019/5/27.
+//  Created by s92104 on 2019/5/29.
 //  Copyright © 2019 s92104. All rights reserved.
 //
 
 import UIKit
 import FirebaseFirestore
 
-class LoginViewController: UIViewController {
+class SignupViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
@@ -19,35 +19,37 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func login(_ sender: UIButton) {
+    @IBAction func signup(_ sender: UIButton) {
         let db=Firestore.firestore()
         let documentRef=db.collection("user").document(username.text!)
         documentRef.getDocument { (document, error) in
+            //已存在帳號
             if document!.exists
             {
-                
-            }
-            //帳號不存在
-            else
-            {
-                let alert=UIAlertController(title: "登入失敗", message: "帳號不存在", preferredStyle: .alert)
+                let alert=UIAlertController(title: "註冊失敗", message: "帳號已存在", preferredStyle: .alert)
                 let action=UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(action)
                 
                 self.present(alert, animated: true, completion: nil)
             }
+            else
+            {
+                documentRef.setData(["password":self.password.text!], completion: { (error) in
+                    let alert=UIAlertController(title: "", message: "註冊成功", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
         }
     }
+    
     @IBAction func cancel(_ sender: UIButton) {
-        let appDelegate=UIApplication.shared.delegate as! AppDelegate
-        let vc=appDelegate.window?.rootViewController as! TabBarController
-        print(vc.username+" "+vc.password)
-        
-        vc.selectedIndex=vc.lastIndex
         dismiss(animated: true, completion: nil)
     }
-    
-    
     /*
     // MARK: - Navigation
 

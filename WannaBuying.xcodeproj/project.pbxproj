@@ -16,6 +16,7 @@
 		B1090FB92275DF4A003AA3DD /* WannaBuyingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1090FB82275DF4A003AA3DD /* WannaBuyingTests.swift */; };
 		B1090FC42275DF4A003AA3DD /* WannaBuyingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1090FC32275DF4A003AA3DD /* WannaBuyingUITests.swift */; };
 		B11C5F41227EFE580022FFA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B11C5F40227EFE580022FFA8 /* GoogleService-Info.plist */; };
+		B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1277808229E971B005E6CDA /* SignupViewController.swift */; };
 		B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */; };
 		B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C41B2229C21BB00AC8618 /* LoginViewController.swift */; };
 		B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */; };
@@ -58,6 +59,7 @@
 		B1090FC32275DF4A003AA3DD /* WannaBuyingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WannaBuyingUITests.swift; sourceTree = "<group>"; };
 		B1090FC52275DF4A003AA3DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B11C5F40227EFE580022FFA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B1277808229E971B005E6CDA /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewController.swift; sourceTree = "<group>"; };
 		B15C41B2229C21BB00AC8618 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			children = (
 				B1090FA32275DF48003AA3DD /* AppDelegate.swift */,
 				B1090FA72275DF48003AA3DD /* Main.storyboard */,
+				B1277808229E971B005E6CDA /* SignupViewController.swift */,
 				B15C41B2229C21BB00AC8618 /* LoginViewController.swift */,
 				B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */,
 				B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */,
@@ -417,6 +420,7 @@
 			files = (
 				B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */,
 				B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */,
+				B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */,
 				B1090FA42275DF48003AA3DD /* AppDelegate.swift in Sources */,
 				B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */,
 			);
