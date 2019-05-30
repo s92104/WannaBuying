@@ -10,7 +10,6 @@ import UIKit
 
 class TabBarController: UITabBarController,UITabBarControllerDelegate {
     var username=""
-    var password=""
     var lastIndex=2
     
     override func viewDidLoad() {

@@ -13,10 +13,9 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    override func viewDidLoad() {
+            override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
     }
     
     @IBAction func login(_ sender: UIButton) {
@@ -25,7 +24,31 @@ class LoginViewController: UIViewController {
         documentRef.getDocument { (document, error) in
             if document!.exists
             {
-                
+                //登入
+                if (document?.get("password") as! String) == self.password.text
+                {
+                    //紀錄username
+                    let appDelegate=UIApplication.shared.delegate as! AppDelegate
+                    let vc=appDelegate.window?.rootViewController as! TabBarController
+                    vc.username=self.username.text!
+                    
+                    let alert=UIAlertController(title: "", message: "登入成功", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: { (action) in
+                        self.dismiss(animated: true, completion: nil)
+                    })
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                //密碼錯誤
+                else
+                {
+                    let alert=UIAlertController(title: "登入失敗", message: "密碼錯誤", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
             //帳號不存在
             else
@@ -41,10 +64,14 @@ class LoginViewController: UIViewController {
     @IBAction func cancel(_ sender: UIButton) {
         let appDelegate=UIApplication.shared.delegate as! AppDelegate
         let vc=appDelegate.window?.rootViewController as! TabBarController
-        print(vc.username+" "+vc.password)
-        
         vc.selectedIndex=vc.lastIndex
+        
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func remember(_ sender: UISwitch) {
+    }
+    @IBAction func autoLogin(_ sender: UISwitch) {
     }
     
     

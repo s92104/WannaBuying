@@ -23,7 +23,7 @@ class SignupViewController: UIViewController {
         let db=Firestore.firestore()
         let documentRef=db.collection("user").document(username.text!)
         documentRef.getDocument { (document, error) in
-            //已存在帳號
+            //帳號已存在
             if document!.exists
             {
                 let alert=UIAlertController(title: "註冊失敗", message: "帳號已存在", preferredStyle: .alert)
@@ -32,6 +32,7 @@ class SignupViewController: UIViewController {
                 
                 self.present(alert, animated: true, completion: nil)
             }
+            //註冊
             else
             {
                 documentRef.setData(["password":self.password.text!], completion: { (error) in
