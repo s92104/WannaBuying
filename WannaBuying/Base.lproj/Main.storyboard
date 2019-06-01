@@ -249,7 +249,7 @@
         <scene sceneID="DAq-qD-cBV">
             <objects>
                 <viewController storyboardIdentifier="Login" title="LoginViewController" hidesBottomBarWhenPushed="YES" id="Dvp-vF-TQH" customClass="LoginViewController" customModule="WannaBuying" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Q3X-zo-nyn">
+                    <view key="view" contentMode="scaleToFill" id="Q3X-zo-nyn" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -259,6 +259,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="textDone:" destination="Dvp-vF-TQH" eventType="editingDidEnd" id="dWl-og-C8k"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHI-jk-ZjQ">
                                 <rect key="frame" x="172" y="448" width="31" height="30"/>
@@ -290,6 +293,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="textDone:" destination="Dvp-vF-TQH" eventType="editingDidEndOnExit" id="I0p-KL-0D1"/>
+                                </connections>
                             </textField>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlQ-Od-K6Y">
                                 <rect key="frame" x="227" y="230" width="49" height="31"/>
@@ -316,6 +322,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="jA2-BZ-gng"/>
+                        <connections>
+                            <action selector="bgTouch:" destination="Dvp-vF-TQH" eventType="touchDown" id="RGA-Jk-bag"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5s1-yW-0Gl"/>
                     <connections>
