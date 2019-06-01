@@ -10,7 +10,7 @@ import UIKit
 
 class TabBarController: UITabBarController,UITabBarControllerDelegate {
     var username=""
-    var lastIndex=2
+    var index=2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,21 +18,34 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
         self.delegate=self
         self.selectedIndex=2
     }
-    
-    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
-        if username=="" && (self.selectedIndex==1 || self.selectedIndex==3 || self.selectedIndex==4)
+
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        if username=="" && (viewController==self.viewControllers?[1] || viewController==self.viewControllers?[3] || viewController==self.viewControllers?[4])
         {
+            //記錄選擇頁面
+            if viewController==self.viewControllers?[1]
+            {
+                index=1
+            }
+            if viewController==self.viewControllers?[3]
+            {
+                index=3
+            }
+            if viewController==self.viewControllers?[4]
+            {
+                index=4
+            }
+            //跳Login頁面
             if let vc=storyboard?.instantiateViewController(withIdentifier: "Login")
             {
                 present(vc, animated: true, completion: nil)
             }
+            
+            return false
         }
-        if self.selectedIndex==0 || self.selectedIndex==2
-        {
-            lastIndex=self.selectedIndex
-        }
+        
+        return true
     }
-
     
     /*
     // MARK: - Navigation

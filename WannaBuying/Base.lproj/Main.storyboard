@@ -280,16 +280,10 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TlQ-Od-K6Y">
                                 <rect key="frame" x="229" y="263" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="remember:" destination="Dvp-vF-TQH" eventType="valueChanged" id="CYX-yv-Ceg"/>
-                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fTH-Za-BW8">
                                 <rect key="frame" x="229" y="339" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="autoLogin:" destination="Dvp-vF-TQH" eventType="valueChanged" id="0Xt-PM-Gwp"/>
-                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="記住帳密" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oaa-Gz-CaT">
                                 <rect key="frame" x="103" y="268" width="70" height="21"/>
@@ -318,7 +312,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="5s1-yW-0Gl"/>
                     <connections>
+                        <outlet property="autoLogin" destination="fTH-Za-BW8" id="Ihm-T9-W3C"/>
+                        <outlet property="loginBtn" destination="t9S-Le-N1t" id="pBV-g5-ND8"/>
                         <outlet property="password" destination="nQb-X2-jLd" id="uKX-bG-PDT"/>
+                        <outlet property="remember" destination="TlQ-Od-K6Y" id="LDt-AL-XiT"/>
                         <outlet property="username" destination="9uK-Up-vfL" id="sXP-1b-h7N"/>
                     </connections>
                 </viewController>
