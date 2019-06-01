@@ -17,15 +17,25 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     @IBOutlet weak var amountInput: UITextField!
     @IBOutlet weak var typeInput: UITextField!
     @IBOutlet weak var detailInput: UITextView!
-    var username=""
+    //TEST
+    @IBAction func logout(_ sender: UIButton) {
+        let appDelegate=UIApplication.shared.delegate as! AppDelegate
+        let vc=appDelegate.window?.rootViewController as! TabBarController
+        vc.username=""
+        vc.selectedIndex=2
+        UserDefaults.standard.set(false, forKey: "autoLogin")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         detailInput.layer.borderWidth=1
         detailInput.layer.cornerRadius=8
         detailInput.layer.borderColor=#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        username="test"
     }
     
     //收鍵盤
@@ -83,8 +93,11 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     }
     
     @IBAction func postCommodity(_ sender: UIButton) {
+        let appDelegate=UIApplication.shared.delegate as! AppDelegate
+        let vc=appDelegate.window?.rootViewController as! TabBarController
+        
         let db=Firestore.firestore()
-        db.collection("commodity").addDocument(data: ["username":username,"title":titleInput.text,"price":priceInput.text,"amount":amountInput.text,"remainder":amountInput.text,"type":typeInput.text,"detail":detailInput.text,"view":0])
+        db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":priceInput.text,"amount":amountInput.text,"remainder":amountInput.text,"type":typeInput.text,"detail":detailInput.text,"view":0])
     }
     
     

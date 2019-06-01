@@ -38,9 +38,6 @@ class LoginViewController: UIViewController {
         if UserDefaults.standard.bool(forKey: "autoLogin")
         {
             autoLogin.isOn=true
-            username.text=UserDefaults.standard.string(forKey: "username")
-            password.text=UserDefaults.standard.string(forKey: "password")
-            login(loginBtn)
         }
         else
         {
@@ -79,7 +76,6 @@ class LoginViewController: UIViewController {
                     {
                         UserDefaults.standard.set(true, forKey: "autoLogin")
                         UserDefaults.standard.set(self.username.text, forKey: "username")
-                        UserDefaults.standard.set(self.password.text, forKey: "password")
                     }
                     else
                     {

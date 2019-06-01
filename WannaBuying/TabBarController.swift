@@ -17,6 +17,11 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
 
         self.delegate=self
         self.selectedIndex=2
+        //autoLogin
+        if UserDefaults.standard.bool(forKey: "autoLogin")
+        {
+            username=UserDefaults.standard.string(forKey: "username")!
+        }
     }
 
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
