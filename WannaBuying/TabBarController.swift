@@ -17,7 +17,8 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
 
         self.delegate=self
         self.selectedIndex=2
-        //autoLogin
+        
+        //UserDefault
         if UserDefaults.standard.bool(forKey: "autoLogin")
         {
             username=UserDefaults.standard.string(forKey: "username")!

@@ -13,8 +13,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var remember: UISwitch!
-    @IBOutlet weak var autoLogin: UISwitch!
-    @IBOutlet weak var loginBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,15 +32,6 @@ class LoginViewController: UIViewController {
         {
             remember.isOn=false
         }
-        //自動登入
-        if UserDefaults.standard.bool(forKey: "autoLogin")
-        {
-            autoLogin.isOn=true
-        }
-        else
-        {
-            autoLogin.isOn=false
-        }
     }
     
     @IBAction func login(_ sender: UIButton) {
@@ -60,28 +49,21 @@ class LoginViewController: UIViewController {
                     vc.username=self.username.text!
                     //切到選擇的頁面
                     vc.selectedIndex=vc.index
+                    //UserDefault
+                    UserDefaults.standard.set(self.username.text, forKey: "username")
+                    UserDefaults.standard.set(true, forKey: "autoLogin")
                     
                     //紀錄按鈕狀態
                     if self.remember.isOn
                     {
                         UserDefaults.standard.set(true, forKey: "remember")
-                        UserDefaults.standard.set(self.username.text, forKey: "username")
                         UserDefaults.standard.set(self.password.text, forKey: "password")
                     }
                     else
                     {
                         UserDefaults.standard.set(false, forKey: "remember")
                     }
-                    if self.autoLogin.isOn
-                    {
-                        UserDefaults.standard.set(true, forKey: "autoLogin")
-                        UserDefaults.standard.set(self.username.text, forKey: "username")
-                    }
-                    else
-                    {
-                        UserDefaults.standard.set(false, forKey: "autoLogin")
-                    }
-                    
+                   
                     //Alert
                     let alert=UIAlertController(title: "", message: "登入成功", preferredStyle: .alert)
                     let action=UIAlertAction(title: "OK", style: .default, handler: { (action) in

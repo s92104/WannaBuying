@@ -18,6 +18,7 @@
 		B11C5F41227EFE580022FFA8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B11C5F40227EFE580022FFA8 /* GoogleService-Info.plist */; };
 		B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1277808229E971B005E6CDA /* SignupViewController.swift */; };
 		B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */; };
+		B12C3E6F22A3E5AE00A6D943 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */; };
 		B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C41B2229C21BB00AC8618 /* LoginViewController.swift */; };
 		B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */; };
 		B843948735C4706518195365 /* Pods_WannaBuyingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC852BF98A8E3E95DA8C823 /* Pods_WannaBuyingUITests.framework */; };
@@ -61,6 +62,7 @@
 		B11C5F40227EFE580022FFA8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B1277808229E971B005E6CDA /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewController.swift; sourceTree = "<group>"; };
+		B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		B15C41B2229C21BB00AC8618 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BBB2CF73D6083C08F82794D2 /* Pods_WannaBuyingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuyingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -134,6 +136,7 @@
 			children = (
 				B1090FA32275DF48003AA3DD /* AppDelegate.swift */,
 				B1090FA72275DF48003AA3DD /* Main.storyboard */,
+				B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */,
 				B1277808229E971B005E6CDA /* SignupViewController.swift */,
 				B15C41B2229C21BB00AC8618 /* LoginViewController.swift */,
 				B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */,
@@ -418,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B12C3E6F22A3E5AE00A6D943 /* ProfileTableViewController.swift in Sources */,
 				B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */,
 				B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */,
 				B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */,

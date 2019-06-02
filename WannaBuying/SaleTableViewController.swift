@@ -17,14 +17,6 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     @IBOutlet weak var amountInput: UITextField!
     @IBOutlet weak var typeInput: UITextField!
     @IBOutlet weak var detailInput: UITextView!
-    //TEST
-    @IBAction func logout(_ sender: UIButton) {
-        let appDelegate=UIApplication.shared.delegate as! AppDelegate
-        let vc=appDelegate.window?.rootViewController as! TabBarController
-        vc.username=""
-        vc.selectedIndex=2
-        UserDefaults.standard.set(false, forKey: "autoLogin")
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,7 +89,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         let vc=appDelegate.window?.rootViewController as! TabBarController
         
         let db=Firestore.firestore()
-        db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":priceInput.text,"amount":amountInput.text,"remainder":amountInput.text,"type":typeInput.text,"detail":detailInput.text,"view":0])
+        db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":Int(priceInput.text!),"amount":Int(amountInput.text!),"remainder":Int(amountInput.text!),"type":typeInput.text,"detail":detailInput.text,"view":0])
     }
     
     

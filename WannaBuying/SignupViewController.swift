@@ -51,6 +51,17 @@ class SignupViewController: UIViewController {
     @IBAction func cancel(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func bgTouch(_ sender: UIControl) {
+        username.resignFirstResponder()
+        password.resignFirstResponder()
+    }
+    @IBAction func textDone(_ sender: UITextField) {
+        username.resignFirstResponder()
+        password.resignFirstResponder()
+    }
+    
+    
     /*
     // MARK: - Navigation
 
