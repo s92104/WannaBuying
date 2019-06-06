@@ -17,6 +17,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     @IBOutlet weak var amountInput: UITextField!
     @IBOutlet weak var typeInput: UITextField!
     @IBOutlet weak var detailInput: UITextView!
+    var imageUrlString=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +67,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image=info[UIImagePickerController.InfoKey.originalImage] as! UIImage
         //Filename
-        let imageUrl=info[UIImagePickerController.InfoKey.imageURL] as! URL
+        var imageUrl=info[UIImagePickerController.InfoKey.imageURL] as! URL
         let imageName=imageUrl.lastPathComponent
         let storageRef=Storage.storage().reference().child(imageName)
         //Metadata
@@ -78,18 +79,35 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         storageRef.putData(uploadData!, metadata: metadata) { (metadata, error) in
             self.imageInput.image=image
             storageRef.downloadURL(completion: { (url, error) in
-                print(url?.absoluteString)
+                self.imageUrlString=url!.absoluteString
             })
         }
         dismiss(animated: true, completion: nil)
     }
     
     @IBAction func postCommodity(_ sender: UIButton) {
-        let appDelegate=UIApplication.shared.delegate as! AppDelegate
-        let vc=appDelegate.window?.rootViewController as! TabBarController
+        //沒輸入
+        var price=0
+        var amount=0
+        if priceInput.text != ""
+        {
+            price=Int(priceInput.text!)!
+        }
+        if amountInput.text != ""
+        {
+            amount=Int(amountInput.text!)!
+        }
+        //TabBarController
+        let vc=self.tabBarController as! TabBarController
         
         let db=Firestore.firestore()
-        db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":Int(priceInput.text!),"amount":Int(amountInput.text!),"remainder":Int(amountInput.text!),"type":typeInput.text,"detail":detailInput.text,"view":0])
+        db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":price,"amount":amount,"remainder":amount,"type":typeInput.text,"detail":detailInput.text,"image":imageUrlString,"view":0]) { (error) in
+            let alert=UIAlertController(title: "", message: "刊登成功", preferredStyle: .alert)
+            let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     

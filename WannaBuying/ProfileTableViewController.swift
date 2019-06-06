@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class ProfileTableViewController: UITableViewController {
-
+    @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var username: UILabel!
+    @IBOutlet weak var detail: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,9 +24,26 @@ class ProfileTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        username.text=(self.tabBarController as! TabBarController).username
+        Firestore.firestore().collection("user").document(username.text!).getDocument { (document, error) in
+            self.detail.text=document?.get("detail") as? String
+            
+            if let url=document?.get("image") as? String
+            {
+                URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
+                    DispatchQueue.main.async {
+                        self.profileImage.image=UIImage(data: data!)
+                    }
+                }).resume()
+            }
+        }
+    }
+    
     @IBAction func logout(_ sender: UIButton) {
-        let appDelegate=UIApplication.shared.delegate as! AppDelegate
-        let vc=appDelegate.window?.rootViewController as! TabBarController
+        let vc=self.tabBarController as! TabBarController
         vc.username=""
         UserDefaults.standard.set(false, forKey: "autoLogin")
         
@@ -35,6 +56,7 @@ class ProfileTableViewController: UITableViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+
     
     
     // MARK: - Table view data source
