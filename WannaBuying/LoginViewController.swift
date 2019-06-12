@@ -13,6 +13,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var username: UITextField!
     @IBOutlet weak var password: UITextField!
     @IBOutlet weak var remember: UISwitch!
+    var vc=TabBarController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,11 +45,9 @@ class LoginViewController: UIViewController {
                 if (document?.get("password") as! String) == self.password.text
                 {
                     //紀錄username
-                    let appDelegate=UIApplication.shared.delegate as! AppDelegate
-                    let vc=appDelegate.window?.rootViewController as! TabBarController
-                    vc.username=self.username.text!
+                    self.vc.username=self.username.text!
                     //切到選擇的頁面
-                    vc.selectedIndex=vc.index
+                    self.vc.selectedIndex=self.vc.index
                     //UserDefault
                     UserDefaults.standard.set(self.username.text, forKey: "username")
                     UserDefaults.standard.set(true, forKey: "autoLogin")

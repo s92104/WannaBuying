@@ -42,10 +42,9 @@ class TabBarController: UITabBarController,UITabBarControllerDelegate {
                 index=4
             }
             //跳Login頁面
-            if let vc=storyboard?.instantiateViewController(withIdentifier: "Login")
-            {
-                present(vc, animated: true, completion: nil)
-            }
+            let vc=storyboard?.instantiateViewController(withIdentifier: "Login") as! LoginViewController
+            vc.vc=self
+            present(vc, animated: true, completion: nil)
             
             return false
         }
