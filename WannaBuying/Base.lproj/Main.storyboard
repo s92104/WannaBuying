@@ -502,6 +502,9 @@
                                                     <rect key="frame" x="156.57397504455525" y="7.7860962567037859" width="62" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" title="修改資料"/>
+                                                    <connections>
+                                                        <action selector="editProfile:" destination="obN-Hz-bdx" eventType="touchUpInside" id="g45-ay-2y2"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -542,6 +545,71 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WiA-O9-84x" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1685.5999999999999" y="1223.8380809595203"/>
+        </scene>
+        <!--EditProfileViewController-->
+        <scene sceneID="f0W-Bc-Egb">
+            <objects>
+                <viewController storyboardIdentifier="EditProfile" title="EditProfileViewController" id="6pA-PQ-f8f" customClass="EditProfileViewController" customModule="WannaBuying" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dwt-t8-y9c">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Up7-qp-eRa">
+                                <rect key="frame" x="123" y="20" width="128" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="iMh-Qw-4Ld" appends="YES" id="G1f-3k-y1e"/>
+                                </connections>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="帳號" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7i-e3-HCR">
+                                <rect key="frame" x="87.153297682733864" y="198" width="200.00000000000023" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hzy-xK-Sm3">
+                                <rect key="frame" x="87.153297682733864" y="262" width="200.00000000000023" height="30.000000000000227"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWn-Ep-ESf">
+                                <rect key="frame" x="87" y="318" width="200.00000000000023" height="30.000000000000227"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SSc-c5-GwO">
+                                <rect key="frame" x="172" y="401" width="31" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="修該"/>
+                                <connections>
+                                    <action selector="editProfile:" destination="6pA-PQ-f8f" eventType="touchUpInside" id="KZP-BD-2Gh"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="LYT-I5-dvV"/>
+                    </view>
+                    <connections>
+                        <outlet property="detail" destination="eWn-Ep-ESf" id="H07-9K-wt2"/>
+                        <outlet property="image" destination="Up7-qp-eRa" id="cky-Hf-mbh"/>
+                        <outlet property="password" destination="Hzy-xK-Sm3" id="Oki-Nm-vet"/>
+                        <outlet property="username" destination="P7i-e3-HCR" id="Q9h-Ut-KIr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Npl-AT-FIm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="iMh-Qw-4Ld">
+                    <connections>
+                        <action selector="uploadImage:" destination="6pA-PQ-f8f" id="yQC-UX-X0e"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2399" y="1224"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Pnd-Op-7hd">

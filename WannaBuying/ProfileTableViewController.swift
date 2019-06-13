@@ -42,6 +42,13 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func editProfile(_ sender: UIButton) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "EditProfile") as! EditProfileViewController
+        vc.usernameString=(self.tabBarController as! TabBarController).username
+        
+        present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func logout(_ sender: UIButton) {
         let vc=self.tabBarController as! TabBarController
         vc.username=""
