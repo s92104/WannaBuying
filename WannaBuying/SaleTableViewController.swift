@@ -18,6 +18,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     @IBOutlet weak var typeInput: UITextField!
     @IBOutlet weak var detailInput: UITextView!
     var imageUrlString=""
+    var vc=TabBarController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,8 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        vc=tabBarController as! TabBarController
         
         detailInput.layer.borderWidth=1
         detailInput.layer.cornerRadius=8
@@ -69,7 +72,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         //Filename
         var imageUrl=info[UIImagePickerController.InfoKey.imageURL] as! URL
         let imageName=imageUrl.lastPathComponent
-        let storageRef=Storage.storage().reference().child(imageName)
+        let storageRef=Storage.storage().reference().child(vc.username+"/"+imageName)
         //Metadata
         let imageExtension=imageUrl.pathExtension
         let metadata=StorageMetadata()
@@ -97,8 +100,6 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         {
             amount=Int(amountInput.text!)!
         }
-        //TabBarController
-        let vc=self.tabBarController as! TabBarController
         
         let db=Firestore.firestore()
         db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":price,"amount":amount,"remainder":amount,"type":typeInput.text,"detail":detailInput.text,"image":imageUrlString,"view":0]) { (error) in
