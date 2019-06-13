@@ -22,6 +22,7 @@
 		B12C3E6F22A3E5AE00A6D943 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */; };
 		B14FE38122B25BD80070CB43 /* CommodityCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B14FE38022B25BD80070CB43 /* CommodityCollectionViewController.swift */; };
 		B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C41B2229C21BB00AC8618 /* LoginViewController.swift */; };
+		B1A9729422B272E20084AA0D /* CommodityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A9729322B272E20084AA0D /* CommodityCollectionViewCell.swift */; };
 		B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */; };
 		B843948735C4706518195365 /* Pods_WannaBuyingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC852BF98A8E3E95DA8C823 /* Pods_WannaBuyingUITests.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +69,7 @@
 		B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		B14FE38022B25BD80070CB43 /* CommodityCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityCollectionViewController.swift; sourceTree = "<group>"; };
 		B15C41B2229C21BB00AC8618 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B1A9729322B272E20084AA0D /* CommodityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		BBB2CF73D6083C08F82794D2 /* Pods_WannaBuyingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuyingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3CBA83ED5A1A24F176629 /* Pods-WannaBuyingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaBuyingTests.release.xcconfig"; path = "Target Support Files/Pods-WannaBuyingTests/Pods-WannaBuyingTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			children = (
 				B1090FA32275DF48003AA3DD /* AppDelegate.swift */,
 				B1090FA72275DF48003AA3DD /* Main.storyboard */,
+				B1A9729322B272E20084AA0D /* CommodityCollectionViewCell.swift */,
 				B14FE38022B25BD80070CB43 /* CommodityCollectionViewController.swift */,
 				B113E3E122B0D7EC007081E0 /* EditProfileViewController.swift */,
 				B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */,
@@ -434,6 +437,7 @@
 				B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */,
 				B1090FA42275DF48003AA3DD /* AppDelegate.swift in Sources */,
 				B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */,
+				B1A9729422B272E20084AA0D /* CommodityCollectionViewCell.swift in Sources */,
 				B113E3E222B0D7EC007081E0 /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

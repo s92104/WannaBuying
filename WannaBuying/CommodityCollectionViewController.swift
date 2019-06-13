@@ -7,11 +7,13 @@
 //
 
 import UIKit
-
-private let reuseIdentifier = "Cell"
+import FirebaseFirestore
 
 class CommodityCollectionViewController: UICollectionViewController {
-
+    var allDocument:[QueryDocumentSnapshot] = []
+    var titleString:[String]=[]
+    var imageUrl:[String]=[]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -19,42 +21,63 @@ class CommodityCollectionViewController: UICollectionViewController {
         // self.clearsSelectionOnViewWillAppear = false
 
         // Register cell classes
-        self.collectionView!.register(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
         // Do any additional setup after loading the view.
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //讀資料
+        Firestore.firestore().collection("commodity").getDocuments { (query, error) in
+            self.allDocument=query!.documents
+            for document in self.allDocument
+            {
+                self.titleString.append(document.get("title") as! String)
+                self.imageUrl.append(document.get("image") as! String)
+            }
+            
+            self.collectionView.reloadData()
+        }
     }
-    */
-
-    // MARK: UICollectionViewDataSource
-
-    override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        return 0
+        return allDocument.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-    
-        // Configure the cell
-    
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Commodity", for: indexPath) as! CommodityCollectionViewCell
+        
+        cell.title.text=titleString[indexPath.row]
+        if imageUrl[indexPath.row] != ""
+        {
+            URLSession.shared.dataTask(with: URL(string: imageUrl[indexPath.row])!, completionHandler: { (data, response, error) in
+                DispatchQueue.main.async {
+                    cell.image.image=UIImage(data: data!)
+                }
+            }).resume()
+        }
+        
         return cell
     }
 
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using [segue destinationViewController].
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
+    // MARK: UICollectionViewDataSource
+    
+    /*override func numberOfSections(in collectionView: UICollectionView) -> Int {
+     // #warning Incomplete implementation, return the number of sections
+     return 0
+     }*/
+    
     // MARK: UICollectionViewDelegate
 
     /*

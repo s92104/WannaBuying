@@ -18,19 +18,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gy6-Ua-ngp">
-                            <size key="itemSize" width="50" height="50"/>
+                            <size key="itemSize" width="100" height="150"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="UGb-eX-eJz">
-                                <rect key="frame" x="0.0" y="50" width="50" height="50"/>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Commodity" id="yAs-dy-yJC" customClass="CommodityCollectionViewCell" customModule="WannaBuying" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="50" width="100" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="150"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="uploadimage" translatesAutoresizingMaskIntoConstraints="NO" id="3st-9V-b5x">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="標題" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s4e-Ei-1HV">
+                                            <rect key="frame" x="-0.99465240641711716" y="109.00000000000045" width="100" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </view>
+                                <connections>
+                                    <outlet property="image" destination="3st-9V-b5x" id="rcn-za-u08"/>
+                                    <outlet property="title" destination="s4e-Ei-1HV" id="RwF-lF-YDy"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Ive-NW-bBs">
@@ -56,6 +73,7 @@
                             <outlet property="delegate" destination="c1f-7P-3c7" id="mPX-xB-RbA"/>
                         </connections>
                     </collectionView>
+                    <tabBarItem key="tabBarItem" title="商品" id="AW9-BN-mVS"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sqT-io-ios" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -657,6 +675,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
+                        <segue destination="c1f-7P-3c7" kind="relationship" relationship="viewControllers" id="5vk-dv-8IN"/>
                         <segue destination="3Xk-Nr-s3Q" kind="relationship" relationship="viewControllers" id="SQj-Yt-hoj"/>
                         <segue destination="1V7-mh-ZfM" kind="relationship" relationship="viewControllers" id="vhY-F8-7he"/>
                         <segue destination="wKH-4d-aFd" kind="relationship" relationship="viewControllers" id="7Du-SH-kpL"/>
