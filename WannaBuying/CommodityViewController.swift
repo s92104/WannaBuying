@@ -86,6 +86,9 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
         
     }
     
+    @IBAction func textDone(_ sender: UITextField) {
+        searchInput.resignFirstResponder()
+    }
     
     /*
     // MARK: - Navigation
