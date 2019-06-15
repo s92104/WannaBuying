@@ -98,8 +98,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func textDone(_ sender: UITextField) {
-        username.resignFirstResponder()
-        password.resignFirstResponder()
+        sender.resignFirstResponder()
     }
     @IBAction func bgTouch(_ sender: UIControl) {
         username.resignFirstResponder()

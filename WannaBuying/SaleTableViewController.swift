@@ -28,7 +28,9 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         super.viewWillAppear(animated)
         
         vc=tabBarController as! TabBarController
+        imageUrlString=""
         
+        imageInput.image=UIImage(named: "uploadimage")
         detailInput.layer.borderWidth=1
         detailInput.layer.cornerRadius=8
         detailInput.layer.borderColor=#colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)

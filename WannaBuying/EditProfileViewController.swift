@@ -102,6 +102,15 @@ class EditProfileViewController: UIViewController,UINavigationControllerDelegate
         dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func textDone(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+    @IBAction func bgTouch(_ sender: UIControl) {
+        password.resignFirstResponder()
+        detail.resignFirstResponder()
+    }
+    
+    
     /*
     // MARK: - Navigation
 

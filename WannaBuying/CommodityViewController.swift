@@ -87,8 +87,13 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     @IBAction func textDone(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+    @IBAction func bgTouch(_ sender: UITapGestureRecognizer) {
         searchInput.resignFirstResponder()
     }
+    
+    
     
     /*
     // MARK: - Navigation

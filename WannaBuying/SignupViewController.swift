@@ -57,8 +57,7 @@ class SignupViewController: UIViewController {
         password.resignFirstResponder()
     }
     @IBAction func textDone(_ sender: UITextField) {
-        username.resignFirstResponder()
-        password.resignFirstResponder()
+        sender.resignFirstResponder()
     }
     
     
