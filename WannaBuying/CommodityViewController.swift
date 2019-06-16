@@ -18,7 +18,7 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     var imageUrl=[String]()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         collectionView.dataSource=self
         collectionView.delegate=self
     }
@@ -51,23 +51,33 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Commodity", for: indexPath) as! CommodityCollectionViewCell
         
-        cell.title.text=titleString[indexPath.row]
-        if imageUrl[indexPath.row] != ""
+        if allDocument.count != 0
         {
-            URLSession.shared.dataTask(with: URL(string: imageUrl[indexPath.row])!, completionHandler: { (data, response, error) in
-                DispatchQueue.main.async {
-                    cell.image.image=UIImage(data: data!)
-                }
-            }).resume()
-        }
-        else
-        {
-            cell.image.image=UIImage(named: "uploadimage")
+            cell.title.text=titleString[indexPath.row]
+            if imageUrl[indexPath.row] != ""
+            {
+                URLSession.shared.dataTask(with: URL(string: imageUrl[indexPath.row])!, completionHandler: { (data, response, error) in
+                    DispatchQueue.main.async {
+                        cell.image.image=UIImage(data: data!)
+                    }
+                }).resume()
+            }
+            else
+            {
+                cell.image.image=UIImage(named: "uploadimage")
+            }
         }
         
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "Commodity") as! CommodityContentTableViewController
+        vc.documentId=allDocument[indexPath.item].documentID
+        vc.username=(tabBarController as! TabBarController).username
+        present(vc, animated: true, completion: nil)
+    }
+    
     @IBAction func search(_ sender: UIButton) {
         Firestore.firestore().collection("commodity").whereField("title", isGreaterThanOrEqualTo: searchInput.text).getDocuments { (query, error) in
             self.allDocument=query!.documents
@@ -89,9 +99,7 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     @IBAction func textDone(_ sender: UITextField) {
         sender.resignFirstResponder()
     }
-    @IBAction func bgTouch(_ sender: UITapGestureRecognizer) {
-        searchInput.resignFirstResponder()
-    }
+
     
     
     

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class CommodityContentTableViewController: UITableViewController {
     @IBOutlet weak var titleLabel: UILabel!
@@ -15,11 +16,18 @@ class CommodityContentTableViewController: UITableViewController {
     @IBOutlet weak var amount: UITextField!
     @IBOutlet weak var remainder: UILabel!
     @IBOutlet weak var detail: UITextView!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var comment: UITextField!
+    
+    var username=""
+    var documentId=""
+    var vc=CommodityCommentTableViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -29,14 +37,69 @@ class CommodityContentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        
+        Firestore.firestore().collection("commodity").document(documentId).getDocument { (document, error) in
+            self.titleLabel.text=document?.get("title") as! String
+            self.type.text=document?.get("type") as! String
+            self.price.text=(document?.get("price") as! NSNumber).stringValue
+            self.remainder.text=(document?.get("remainder") as! NSNumber).stringValue + "/" + (document?.get("amount") as! NSNumber).stringValue
+            self.detail.text=document?.get("detail") as! String
+            if (document?.get("image") as! String) != ""
+            {
+                URLSession.shared.dataTask(with: URL(string: document?.get("image") as! String)!, completionHandler: { (data, response, error) in
+                    DispatchQueue.main.async {
+                        self.image.image=UIImage(data: data!)
+                    }
+                }).resume()
+            }
+            else
+            {
+                self.image.image=UIImage(named: "uploadimage")
+            }
+            
+        }
+    }
+    
+    @IBAction func back(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func save(_ sender: UIButton) {
     }
     
     @IBAction func commentBtn(_ sender: UIButton) {
+        Firestore.firestore().collection("user").document(username).getDocument { (document, error) in
+            Firestore.firestore().collection("commodity").document(self.documentId).collection("comment").addDocument(data: ["username":self.username,"comment":self.comment.text,"image":document?.get("image") as! String]) { (error) in
+                self.comment.text=""
+                self.vc.commentTableView.reloadData()
+                self.vc.viewWillAppear(true)
+                
+                let alert=UIAlertController(title: "", message: "留言成功", preferredStyle: .alert)
+                let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+        }
     }
     
     @IBAction func buy(_ sender: UIButton) {
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier=="comment"
+        {
+            vc=segue.destination as! CommodityCommentTableViewController
+            vc.documentId=self.documentId
+        }
+    }
+    
+    @IBAction func textDone(_ sender: UITextField) {
+        sender.resignFirstResponder()
+    }
+    @IBAction func bgTouch(_ sender: UITapGestureRecognizer) {
+        comment.resignFirstResponder()
+    }
+    
     
     // MARK: - Table view data source
 
