@@ -18,6 +18,7 @@ class CommodityContentTableViewController: UITableViewController {
     @IBOutlet weak var detail: UITextView!
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var saleUsername: UILabel!
     @IBOutlet weak var comment: UITextField!
     
     var username=""
@@ -38,6 +39,7 @@ class CommodityContentTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         
         Firestore.firestore().collection("commodity").document(documentId).getDocument { (document, error) in
+            self.saleUsername.text=document?.get("username") as! String
             self.titleLabel.text=document?.get("title") as! String
             self.type.text=document?.get("type") as! String
             self.price.text=(document?.get("price") as! NSNumber).stringValue
@@ -55,7 +57,17 @@ class CommodityContentTableViewController: UITableViewController {
             {
                 self.image.image=UIImage(named: "uploadimage")
             }
-            
+        }
+        //Save
+        Firestore.firestore().collection("user").document(username).collection("save").document(documentId).getDocument { (document, error) in
+            if document!.exists
+            {
+                print("Yes")
+            }
+            else
+            {
+                print("NO")
+            }
         }
     }
     
@@ -64,7 +76,57 @@ class CommodityContentTableViewController: UITableViewController {
     }
     
     @IBAction func save(_ sender: UIButton) {
+        let documentRef=Firestore.firestore().collection("user").document(username).collection("save").document(documentId)
+        documentRef.getDocument { (document, error) in
+            if document!.exists
+            {
+                documentRef.delete(completion: { (error) in
+                    let alert=UIAlertController(title: "", message: "取消收藏", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+            else
+            {
+                documentRef.setData(["id":self.documentId], completion: { (error) in
+                    let alert=UIAlertController(title: "", message: "收藏成功", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+        }
     }
+    
+    @IBAction func follow(_ sender: UIButton) {
+        let documentRef=Firestore.firestore().collection("user").document(username).collection("follow").document(saleUsername.text!)
+        documentRef.getDocument { (document, error) in
+            if document!.exists
+            {
+                documentRef.delete(completion: { (error) in
+                    let alert=UIAlertController(title: "", message: "取消追蹤", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+            else
+            {
+                documentRef.setData(["id":self.documentId], completion: { (error) in
+                    let alert=UIAlertController(title: "", message: "追蹤成功", preferredStyle: .alert)
+                    let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alert.addAction(action)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                })
+            }
+        }
+    }
+    
     
     @IBAction func commentBtn(_ sender: UIButton) {
         Firestore.firestore().collection("user").document(username).getDocument { (document, error) in
@@ -83,6 +145,36 @@ class CommodityContentTableViewController: UITableViewController {
     }
     
     @IBAction func buy(_ sender: UIButton) {
+        let documentRef=Firestore.firestore().collection("commodity").document(documentId)
+        documentRef.getDocument(completion: { (document, error) in
+            let remainderInt=(document?.get("remainder") as! NSNumber).intValue
+            //賣完了
+            if remainderInt==0
+            {
+                let alert=UIAlertController(title: "", message: "賣完了", preferredStyle: .alert)
+                let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                
+                self.present(alert, animated: true, completion: nil)
+            }
+            else
+            {
+                documentRef.updateData(["remainder":remainderInt-Int(self.amount.text!)!]) { (error) in
+                    //自己
+                    Firestore.firestore().collection("user").document(self.username).collection("buyorder").addDocument(data: ["id":self.documentId,"amount":Int(self.amount.text!)], completion: { (errot) in
+                        //賣方
+                        Firestore.firestore().collection("user").document(self.saleUsername.text!).collection("saleorder").addDocument(data: ["id":self.documentId,"username":self.username,"amount":Int(self.amount.text!)], completion: { (error) in
+                            let alert=UIAlertController(title: "", message: "下單成功", preferredStyle: .alert)
+                            let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                            alert.addAction(action)
+                            
+                            self.present(alert, animated: true, completion: nil)
+                        })
+                    })
+                }
+            }
+        })
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -97,6 +189,7 @@ class CommodityContentTableViewController: UITableViewController {
         sender.resignFirstResponder()
     }
     @IBAction func bgTouch(_ sender: UITapGestureRecognizer) {
+        amount.resignFirstResponder()
         comment.resignFirstResponder()
     }
     

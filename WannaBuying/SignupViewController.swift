@@ -35,7 +35,7 @@ class SignupViewController: UIViewController {
             //註冊
             else
             {
-                documentRef.setData(["password":self.password.text!,"image":""], completion: { (error) in
+                documentRef.setData(["password":self.password.text!,"image":"","detail":""], completion: { (error) in
                     let alert=UIAlertController(title: "", message: "註冊成功", preferredStyle: .alert)
                     let action=UIAlertAction(title: "OK", style: .default, handler: { (action) in
                         self.dismiss(animated: true, completion: nil)

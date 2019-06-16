@@ -42,6 +42,25 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func myCommodity(_ sender: UIButton) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "MyCommodity") as! MyCommodityViewController
+        vc.username=(self.tabBarController as! TabBarController).username
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func follow(_ sender: UIButton) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "Follow") as! FollowViewController
+        vc.username=(self.tabBarController as! TabBarController).username
+        present(vc, animated: true, completion: nil)
+    }
+    
+    @IBAction func save(_ sender: UIButton) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "Save") as! SaveViewController
+        vc.username=(self.tabBarController as! TabBarController).username
+        present(vc, animated: true, completion: nil)
+    }
+    
+    
     @IBAction func editProfile(_ sender: UIButton) {
         let vc=storyboard?.instantiateViewController(withIdentifier: "EditProfile") as! EditProfileViewController
         vc.usernameString=(self.tabBarController as! TabBarController).username

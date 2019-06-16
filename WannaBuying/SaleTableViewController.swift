@@ -104,13 +104,16 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
         }
         
         let db=Firestore.firestore()
-        db.collection("commodity").addDocument(data: ["username":vc.username,"title":titleInput.text,"price":price,"amount":amount,"remainder":amount,"type":typeInput.text,"detail":detailInput.text,"image":imageUrlString,"view":0]) { (error) in
-            let alert=UIAlertController(title: "", message: "刊登成功", preferredStyle: .alert)
-            let action=UIAlertAction(title: "OK", style: .default, handler: nil)
-            alert.addAction(action)
-            
-            self.present(alert, animated: true, completion: nil)
-        }
+        let documentRef=db.collection("commodity").document()
+    documentRef.setData(["username":vc.username,"title":titleInput.text,"price":price,"amount":amount,"remainder":amount,"type":typeInput.text,"detail":detailInput.text,"image":imageUrlString,"view":0], completion: { (error) in
+            db.collection("user").document(self.vc.username).collection("commodity").document(documentRef.documentID).setData(["id":documentRef.documentID], completion: { (error) in
+                let alert=UIAlertController(title: "", message: "刊登成功", preferredStyle: .alert)
+                let action=UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(action)
+                
+                self.present(alert, animated: true, completion: nil)
+            })
+        })
     }
     
     

@@ -26,7 +26,13 @@
 		B1A9729C22B4F9650084AA0D /* CommodityContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A9729B22B4F9650084AA0D /* CommodityContentTableViewController.swift */; };
 		B1A972A422B538150084AA0D /* CommodityCommentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A972A322B538150084AA0D /* CommodityCommentTableViewController.swift */; };
 		B1A972A622B5393D0084AA0D /* CommodityCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A972A522B5393D0084AA0D /* CommodityCommentTableViewCell.swift */; };
+		B1ACBAE722B6634A00BBAA20 /* FollowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAE622B6634A00BBAA20 /* FollowViewController.swift */; };
+		B1ACBAE922B6641A00BBAA20 /* FollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAE822B6641A00BBAA20 /* FollowTableViewCell.swift */; };
+		B1ACBAEB22B66A2B00BBAA20 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAEA22B66A2B00BBAA20 /* SaveViewController.swift */; };
+		B1ACBAED22B66B3000BBAA20 /* SaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAEC22B66B3000BBAA20 /* SaveTableViewCell.swift */; };
 		B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */; };
+		B1CE907722B64FF0003190B3 /* MyCommodityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CE907622B64FF0003190B3 /* MyCommodityTableViewCell.swift */; };
+		B1CE907922B65888003190B3 /* MyCommodityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CE907822B65888003190B3 /* MyCommodityViewController.swift */; };
 		B843948735C4706518195365 /* Pods_WannaBuyingUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC852BF98A8E3E95DA8C823 /* Pods_WannaBuyingUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -76,7 +82,13 @@
 		B1A9729B22B4F9650084AA0D /* CommodityContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityContentTableViewController.swift; sourceTree = "<group>"; };
 		B1A972A322B538150084AA0D /* CommodityCommentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityCommentTableViewController.swift; sourceTree = "<group>"; };
 		B1A972A522B5393D0084AA0D /* CommodityCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityCommentTableViewCell.swift; sourceTree = "<group>"; };
+		B1ACBAE622B6634A00BBAA20 /* FollowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowViewController.swift; sourceTree = "<group>"; };
+		B1ACBAE822B6641A00BBAA20 /* FollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTableViewCell.swift; sourceTree = "<group>"; };
+		B1ACBAEA22B66A2B00BBAA20 /* SaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveViewController.swift; sourceTree = "<group>"; };
+		B1ACBAEC22B66B3000BBAA20 /* SaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTableViewCell.swift; sourceTree = "<group>"; };
 		B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		B1CE907622B64FF0003190B3 /* MyCommodityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommodityTableViewCell.swift; sourceTree = "<group>"; };
+		B1CE907822B65888003190B3 /* MyCommodityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommodityViewController.swift; sourceTree = "<group>"; };
 		BBB2CF73D6083C08F82794D2 /* Pods_WannaBuyingTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuyingTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDE3CBA83ED5A1A24F176629 /* Pods-WannaBuyingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WannaBuyingTests.release.xcconfig"; path = "Target Support Files/Pods-WannaBuyingTests/Pods-WannaBuyingTests.release.xcconfig"; sourceTree = "<group>"; };
 		F234894A0F458DF7F6DC3BC2 /* Pods_WannaBuying.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WannaBuying.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +160,12 @@
 			children = (
 				B1090FA32275DF48003AA3DD /* AppDelegate.swift */,
 				B1090FA72275DF48003AA3DD /* Main.storyboard */,
+				B1ACBAEC22B66B3000BBAA20 /* SaveTableViewCell.swift */,
+				B1ACBAEA22B66A2B00BBAA20 /* SaveViewController.swift */,
+				B1ACBAE822B6641A00BBAA20 /* FollowTableViewCell.swift */,
+				B1ACBAE622B6634A00BBAA20 /* FollowViewController.swift */,
+				B1CE907622B64FF0003190B3 /* MyCommodityTableViewCell.swift */,
+				B1CE907822B65888003190B3 /* MyCommodityViewController.swift */,
 				B1A972A522B5393D0084AA0D /* CommodityCommentTableViewCell.swift */,
 				B1A972A322B538150084AA0D /* CommodityCommentTableViewController.swift */,
 				B1A9729B22B4F9650084AA0D /* CommodityContentTableViewController.swift */,
@@ -439,18 +457,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1ACBAED22B66B3000BBAA20 /* SaveTableViewCell.swift in Sources */,
 				B12C3E6F22A3E5AE00A6D943 /* ProfileTableViewController.swift in Sources */,
 				B1A972A622B5393D0084AA0D /* CommodityCommentTableViewCell.swift in Sources */,
 				B1A972A422B538150084AA0D /* CommodityCommentTableViewController.swift in Sources */,
 				B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */,
 				B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */,
 				B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */,
+				B1ACBAEB22B66A2B00BBAA20 /* SaveViewController.swift in Sources */,
 				B1090FA42275DF48003AA3DD /* AppDelegate.swift in Sources */,
 				B1A9729C22B4F9650084AA0D /* CommodityContentTableViewController.swift in Sources */,
+				B1CE907922B65888003190B3 /* MyCommodityViewController.swift in Sources */,
 				B1A9729822B3E1440084AA0D /* CommodityViewController.swift in Sources */,
+				B1ACBAE922B6641A00BBAA20 /* FollowTableViewCell.swift in Sources */,
 				B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */,
 				B1A9729422B272E20084AA0D /* CommodityCollectionViewCell.swift in Sources */,
+				B1ACBAE722B6634A00BBAA20 /* FollowViewController.swift in Sources */,
 				B113E3E222B0D7EC007081E0 /* EditProfileViewController.swift in Sources */,
+				B1CE907722B64FF0003190B3 /* MyCommodityTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
