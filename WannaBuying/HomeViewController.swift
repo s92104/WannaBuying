@@ -15,6 +15,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     var titleString=[String]()
     var remainder=[String]()
     var price=[String]()
+    var viewCount=[String]()
     var allDocument=[QueryDocumentSnapshot]()
     
     override func viewDidLoad() {
@@ -25,19 +26,23 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        imageUrl=[]
-        titleString=[]
-        remainder=[]
-        price=[]
+        allDocument=[]
+        self.tableView.reloadData()
+        
         Firestore.firestore().collection("commodity").order(by: "view", descending: true).limit(to: 10).getDocuments { (query, error) in
             self.allDocument=query!.documents
-            
+            self.imageUrl=[]
+            self.titleString=[]
+            self.remainder=[]
+            self.price=[]
+            self.viewCount=[]
             for document in self.allDocument
             {
                 self.imageUrl.append(document.get("image") as! String)
                 self.titleString.append(document.get("title") as! String)
                 self.remainder.append((document.get("remainder") as! NSNumber).stringValue)
-                self.price.append((document.get("price") as! NSNumber).stringValue)
+                self.price.append("$" + (document.get("price") as! NSNumber).stringValue)
+                self.viewCount.append("觀看" + (document.get("view") as! NSNumber).stringValue)
             }
             self.tableView.reloadData()
         }
@@ -45,7 +50,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 10
+        return allDocument.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -57,11 +62,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if allDocument.count != 0
-        {
-            return 1
-        }
-        return 0
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,6 +70,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
         cell.title.text=titleString[indexPath.section]
         cell.price.text=price[indexPath.section]
         cell.remainder.text=remainder[indexPath.section]
+        cell.view.text=viewCount[indexPath.section]
         if imageUrl[indexPath.section] != ""
         {
             URLSession.shared.dataTask(with: URL(string: imageUrl[indexPath.section])!, completionHandler: { (data, response, error) in
@@ -84,6 +86,13 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
        
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "Commodity") as! CommodityContentTableViewController
+        vc.documentId=allDocument[indexPath.section].documentID
+        vc.username=(tabBarController as! TabBarController).username
+        present(vc, animated: true, completion: nil)
     }
     
     /*

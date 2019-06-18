@@ -14,7 +14,6 @@ class FollowViewController: UIViewController,UITableViewDelegate,UITableViewData
     var imageUrl=[String]()
     var saleUsername=[String]()
     var detail=[String]()
-    var allDocument=[QueryDocumentSnapshot]()
     @IBOutlet weak var followTableView: UITableView!
     
     override func viewDidLoad() {
@@ -25,22 +24,21 @@ class FollowViewController: UIViewController,UITableViewDelegate,UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Initial
+        self.saleUsername=[]
+        self.imageUrl=[]
+        self.detail=[]
+        self.followTableView.reloadData()
+        
         Firestore.firestore().collection("user").document(username).collection("follow").getDocuments { (query, error) in
-            self.allDocument=query!.documents
-            
-            //Initial
-            self.saleUsername=[]
-            self.imageUrl=[]
-            self.detail=[]
-            
-            for document in self.allDocument
+            for document in query!.documents
             {
                 Firestore.firestore().collection("user").document(document.documentID).getDocument(completion: { (document, error) in
                     self.saleUsername.append(document!.documentID)
                     self.imageUrl.append(document!.get("image") as! String)
                     self.detail.append(document!.get("detail") as! String)
                     
-                    if self.detail.count==self.allDocument.count
+                    if self.detail.count==query?.documents.count
                     {
                         self.followTableView.reloadData()
                     }
@@ -57,7 +55,7 @@ class FollowViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return allDocument.count
+        return saleUsername.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,6 +84,12 @@ class FollowViewController: UIViewController,UITableViewDelegate,UITableViewData
     
     @IBAction func back(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "MyCommodity") as! MyCommodityViewController
+        vc.username=saleUsername[indexPath.row]
+        present(vc, animated: true, completion: nil)
     }
     
     /*

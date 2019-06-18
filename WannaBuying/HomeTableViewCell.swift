@@ -13,6 +13,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var price: UILabel!
     @IBOutlet weak var remainder: UILabel!
+    @IBOutlet weak var view: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

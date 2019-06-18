@@ -14,9 +14,9 @@ class SaveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     var imageUrl=[String]()
     var titleString=[String]()
     var price=[String]()
-    var allDocument=[QueryDocumentSnapshot]()
+    var allDocument=[String]()
     @IBOutlet weak var saveTableView: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,17 +25,18 @@ class SaveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Initial
+        self.titleString=[]
+        self.imageUrl=[]
+        self.price=[]
+        allDocument=[]
+        self.saveTableView.reloadData()
+        
         Firestore.firestore().collection("user").document(username).collection("save").getDocuments { (query, error) in
-            self.allDocument=query!.documents
-            
-            //Initial
-            self.titleString=[]
-            self.imageUrl=[]
-            self.price=[]
-            
-            for document in self.allDocument
+            for document in query!.documents
             {
                 Firestore.firestore().collection("commodity").document(document.documentID).getDocument(completion: { (document, error) in
+                    self.allDocument.append(document!.documentID)
                     self.titleString.append(document!.get("title") as! String)
                     self.imageUrl.append(document!.get("image") as! String)
                     self.price.append((document!.get("price") as! NSNumber).stringValue)
@@ -86,6 +87,13 @@ class SaveViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     @IBAction func back(_ sender: UIBarButtonItem) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "Commodity") as! CommodityContentTableViewController
+        vc.documentId=allDocument[indexPath.row]
+        vc.username=username
+        present(vc, animated: true, completion: nil)
     }
     
     /*

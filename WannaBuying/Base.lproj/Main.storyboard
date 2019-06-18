@@ -125,7 +125,7 @@
                                                         <action selector="back:" destination="LSa-fw-cyZ" eventType="touchUpInside" id="S16-Jh-6WH"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hu6-wP-rsB">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hu6-wP-rsB">
                                                     <rect key="frame" x="328" y="7" width="31" height="30"/>
                                                     <state key="normal" title="收藏"/>
                                                     <connections>
@@ -305,16 +305,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="賣家" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3TY-G0-D8l">
-                                                    <rect key="frame" x="59" y="19.5" width="254" height="21"/>
+                                                    <rect key="frame" x="59" y="19.5" width="35" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1J1-ac-mtk">
                                                     <rect key="frame" x="328" y="15" width="31" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="31" id="11h-75-V4A"/>
-                                                    </constraints>
                                                     <state key="normal" title="追蹤"/>
                                                     <connections>
                                                         <action selector="follow:" destination="LSa-fw-cyZ" eventType="touchUpInside" id="NzJ-hQ-z0p"/>
@@ -323,12 +320,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="BaI-j1-B9k" firstAttribute="leading" secondItem="0HJ-Jx-4Vt" secondAttribute="leading" constant="16" id="1d6-5f-eUg"/>
-                                                <constraint firstAttribute="trailing" secondItem="1J1-ac-mtk" secondAttribute="trailing" constant="16" id="B7h-6x-nBq"/>
                                                 <constraint firstItem="1J1-ac-mtk" firstAttribute="centerY" secondItem="0HJ-Jx-4Vt" secondAttribute="centerY" id="D0Z-UQ-5IH"/>
+                                                <constraint firstAttribute="trailing" secondItem="1J1-ac-mtk" secondAttribute="trailing" constant="16" id="I3F-KU-hQ2"/>
                                                 <constraint firstItem="BaI-j1-B9k" firstAttribute="centerY" secondItem="0HJ-Jx-4Vt" secondAttribute="centerY" id="QLq-ax-8BQ"/>
                                                 <constraint firstItem="3TY-G0-D8l" firstAttribute="leading" secondItem="BaI-j1-B9k" secondAttribute="trailing" constant="8" id="dGV-ha-U6p"/>
                                                 <constraint firstItem="3TY-G0-D8l" firstAttribute="centerY" secondItem="0HJ-Jx-4Vt" secondAttribute="centerY" id="jGD-n3-K66"/>
-                                                <constraint firstItem="1J1-ac-mtk" firstAttribute="leading" secondItem="3TY-G0-D8l" secondAttribute="trailing" constant="15" id="me1-8W-8vC"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -427,6 +423,7 @@
                         <outlet property="comment" destination="A3N-e3-lrb" id="clD-8q-VQB"/>
                         <outlet property="containerView" destination="qhL-3E-krS" id="3kn-KB-kbG"/>
                         <outlet property="detail" destination="Iv6-WR-06c" id="3PA-Ol-wV7"/>
+                        <outlet property="followBtn" destination="1J1-ac-mtk" id="aWc-kH-qMo"/>
                         <outlet property="image" destination="jPk-gL-QTB" id="rAi-ew-Q4R"/>
                         <outlet property="price" destination="6hg-vh-qfa" id="JHm-rC-sd9"/>
                         <outlet property="remainder" destination="fAM-Sv-yqA" id="fjd-WS-Tw2"/>
@@ -865,12 +862,20 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="觀看" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yE5-Zw-7US">
+                                                    <rect key="frame" x="15" y="11" width="35" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="6Cz-5v-u50" firstAttribute="top" secondItem="Bkz-Rd-4a9" secondAttribute="bottom" constant="8" id="1U1-0P-S1I"/>
+                                                <constraint firstItem="yE5-Zw-7US" firstAttribute="leading" secondItem="ji3-b5-b92" secondAttribute="leading" constant="15" id="2Og-Vz-odH"/>
                                                 <constraint firstItem="2wD-q4-95P" firstAttribute="top" secondItem="6Cz-5v-u50" secondAttribute="bottom" id="8JN-I7-Cce"/>
                                                 <constraint firstItem="ABY-UF-ubC" firstAttribute="top" secondItem="6Cz-5v-u50" secondAttribute="bottom" id="DYf-3l-XEg"/>
                                                 <constraint firstItem="ABY-UF-ubC" firstAttribute="leading" secondItem="MEv-jJ-6nV" secondAttribute="trailing" constant="15" id="EYr-tC-up7"/>
+                                                <constraint firstItem="yE5-Zw-7US" firstAttribute="top" secondItem="ji3-b5-b92" secondAttribute="top" constant="11" id="JQM-dP-aZr"/>
                                                 <constraint firstAttribute="trailing" secondItem="6Cz-5v-u50" secondAttribute="trailing" constant="15" id="T7E-BL-OkX"/>
                                                 <constraint firstAttribute="trailing" secondItem="ABY-UF-ubC" secondAttribute="trailing" constant="15" id="WRb-Cj-1PT"/>
                                                 <constraint firstItem="Bkz-Rd-4a9" firstAttribute="centerX" secondItem="ji3-b5-b92" secondAttribute="centerX" id="hUX-dy-K0T"/>
@@ -885,6 +890,7 @@
                                             <outlet property="price" destination="2wD-q4-95P" id="Vvb-v5-X6I"/>
                                             <outlet property="remainder" destination="ABY-UF-ubC" id="RO7-Bc-Foz"/>
                                             <outlet property="title" destination="6Cz-5v-u50" id="uAj-bx-eAr"/>
+                                            <outlet property="view" destination="yE5-Zw-7US" id="kAL-mf-iWb"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1055,6 +1061,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="訂單" id="NDZ-dD-bSK"/>
                     <connections>
+                        <outlet property="segment" destination="bXd-Xt-ngX" id="PBC-vB-TbD"/>
                         <outlet property="tableView" destination="oFz-1R-NLe" id="yQf-JV-DEr"/>
                     </connections>
                 </viewController>

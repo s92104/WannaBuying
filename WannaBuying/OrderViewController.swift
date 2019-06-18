@@ -11,11 +11,12 @@ import FirebaseFirestore
 
 class OrderViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segment: UISegmentedControl!
     var imageUrl=[String]()
     var titleString=[String]()
     var amount=[String]()
     var username=[String]()
-    var allDocument=[QueryDocumentSnapshot]()
+    var allDocument=[String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,21 +30,47 @@ class OrderViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         titleString=[]
         amount=[]
         username=[]
-        Firestore.firestore().collection("user").document((self.tabBarController as! TabBarController).username).collection("buyorder").getDocuments { (query, error) in
-            self.allDocument=query!.documents
-            
-            for document in self.allDocument
-            {
-                self.amount.append((document.get("amount") as! NSNumber).stringValue)
-                Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (document, error) in
-                    self.imageUrl.append(document!.get("image") as! String)
-                    self.titleString.append(document!.get("title") as! String)
-                    self.username.append(document!.get("username") as! String)
-                    if self.username.count==self.allDocument.count
-                    {
-                        self.tableView.reloadData()
-                    }
-                })
+        allDocument=[]
+        self.tableView.reloadData()
+
+        if segment.selectedSegmentIndex==0
+        {
+            Firestore.firestore().collection("user").document((self.tabBarController as! TabBarController).username).collection("buyorder").getDocuments { (query, error) in
+                for document in query!.documents
+                {
+                    Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (cdocument, error) in
+                        self.amount.append((document.get("amount") as! NSNumber).stringValue)
+
+                        self.allDocument.append(cdocument!.documentID)
+                        self.imageUrl.append(cdocument!.get("image") as! String)
+                        self.titleString.append(cdocument!.get("title") as! String)
+                        self.username.append(cdocument!.get("username") as! String)
+                        if self.username.count==self.allDocument.count
+                        {
+                            self.tableView.reloadData()
+                        }
+                    })
+                }
+            }
+        }
+        else
+        {
+            Firestore.firestore().collection("user").document((self.tabBarController as! TabBarController).username).collection("saleorder").getDocuments { (query, error) in
+                for document in query!.documents
+                {
+                    Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (cdocument, error) in
+                        self.amount.append((document.get("amount") as! NSNumber).stringValue)
+                        self.username.append(document.get("username") as! String)
+                        
+                        self.allDocument.append(cdocument!.documentID)
+                        self.imageUrl.append(cdocument!.get("image") as! String)
+                        self.titleString.append(cdocument!.get("title") as! String)
+                        if self.titleString.count==self.allDocument.count
+                        {
+                            self.tableView.reloadData()
+                        }
+                    })
+                }
             }
         }
     }
@@ -91,15 +118,15 @@ class OrderViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         if sender.selectedSegmentIndex==0
         {
             Firestore.firestore().collection("user").document((self.tabBarController as! TabBarController).username).collection("buyorder").getDocuments { (query, error) in
-                self.allDocument=query!.documents
-                
-                for document in self.allDocument
+                for document in query!.documents
                 {
-                    self.amount.append((document.get("amount") as! NSNumber).stringValue)
-                    Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (document, error) in
-                        self.imageUrl.append(document!.get("image") as! String)
-                        self.titleString.append(document!.get("title") as! String)
-                        self.username.append(document!.get("username") as! String)
+                    Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (cdocument, error) in
+                        self.amount.append((document.get("amount") as! NSNumber).stringValue)
+
+                        self.allDocument.append(cdocument!.documentID)
+                        self.imageUrl.append(cdocument!.get("image") as! String)
+                        self.titleString.append(cdocument!.get("title") as! String)
+                        self.username.append(cdocument!.get("username") as! String)
                         if self.username.count==self.allDocument.count
                         {
                             self.tableView.reloadData()
@@ -112,15 +139,15 @@ class OrderViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         else
         {
             Firestore.firestore().collection("user").document((self.tabBarController as! TabBarController).username).collection("saleorder").getDocuments { (query, error) in
-                self.allDocument=query!.documents
-                
-                for document in self.allDocument
+                for document in query!.documents
                 {
-                    self.amount.append((document.get("amount") as! NSNumber).stringValue)
-                    self.username.append(document.get("username") as! String)
-                    Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (document, error) in
-                        self.imageUrl.append(document!.get("image") as! String)
-                        self.titleString.append(document!.get("title") as! String)
+                    Firestore.firestore().collection("commodity").document(document.get("id") as! String).getDocument(completion: { (cdocument, error) in
+                        self.amount.append((document.get("amount") as! NSNumber).stringValue)
+                        self.username.append(document.get("username") as! String)
+                        
+                        self.allDocument.append(cdocument!.documentID)
+                        self.imageUrl.append(cdocument!.get("image") as! String)
+                        self.titleString.append(cdocument!.get("title") as! String)
                         if self.titleString.count==self.allDocument.count
                         {
                             self.tableView.reloadData()
@@ -131,6 +158,12 @@ class OrderViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc=storyboard?.instantiateViewController(withIdentifier: "Commodity") as! CommodityContentTableViewController
+        vc.documentId=allDocument[indexPath.row]
+        vc.username=(tabBarController as! TabBarController).username
+        present(vc, animated: true, completion: nil)
+    }
     
     /*
     // MARK: - Navigation

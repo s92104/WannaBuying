@@ -25,14 +25,15 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        //Initial
+        self.titleString=[]
+        self.imageUrl=[]
+        allDocument=[]
+        self.collectionView.reloadData()
         //讀資料
         Firestore.firestore().collection("commodity").getDocuments { (query, error) in
             self.allDocument=query!.documents
-            
-            //Initial
-            self.titleString=[]
-            self.imageUrl=[]
-            
+           
             for document in self.allDocument
             {
                 self.titleString.append(document.get("title") as! String)
@@ -75,11 +76,13 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     }
     
     @IBAction func search(_ sender: UIButton) {
+        self.titleString=[]
+        self.imageUrl=[]
+        allDocument=[]
+        self.collectionView.reloadData()
+        
         Firestore.firestore().collection("commodity").whereField("title", isGreaterThanOrEqualTo: searchInput.text).getDocuments { (query, error) in
             self.allDocument=query!.documents
-            
-            self.titleString=[]
-            self.imageUrl=[]
             
              for document in self.allDocument
             {

@@ -21,6 +21,7 @@ class CommodityContentTableViewController: UITableViewController {
     @IBOutlet weak var saleUsername: UILabel!
     @IBOutlet weak var comment: UITextField!
     @IBOutlet weak var saveBtn: UIButton!
+    @IBOutlet weak var followBtn: UIButton!
     
     var username=""
     var documentId=""
@@ -39,7 +40,6 @@ class CommodityContentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        var view=0
         Firestore.firestore().collection("commodity").document(documentId).getDocument { (document, error) in
             self.saleUsername.text=document?.get("username") as! String
             self.titleLabel.text=document?.get("title") as! String
@@ -61,18 +61,30 @@ class CommodityContentTableViewController: UITableViewController {
             }
             //View+1
             Firestore.firestore().collection("commodity").document(self.documentId).updateData(["view":(document?.get("view") as! Int)+1])
+            //Follow
+            Firestore.firestore().collection("user").document(self.username).collection("follow").document(document?.get("username") as! String).getDocument { (document, error) in
+                if document!.exists
+                {
+                    self.followBtn.setTitle("已追蹤", for: UIControl.State.normal)
+                }
+                else
+                {
+                    self.followBtn.setTitle("追蹤", for: UIControl.State.normal)
+                }
+            }
         }
         //Save
         Firestore.firestore().collection("user").document(username).collection("save").document(documentId).getDocument { (document, error) in
             if document!.exists
             {
-                self.saveBtn.titleLabel!.text="已收藏"
+                self.saveBtn.setTitle("已收藏", for: UIControl.State.normal)
             }
             else
             {
-                self.saveBtn.titleLabel!.text="收藏"
+                self.saveBtn.setTitle("收藏", for: UIControl.State.normal)
             }
         }
+
     }
     
     @IBAction func back(_ sender: UIButton) {
@@ -85,6 +97,8 @@ class CommodityContentTableViewController: UITableViewController {
             if document!.exists
             {
                 documentRef.delete(completion: { (error) in
+                    self.saveBtn.setTitle("收藏", for: UIControl.State.normal)
+                    
                     let alert=UIAlertController(title: "", message: "取消收藏", preferredStyle: .alert)
                     let action=UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(action)
@@ -95,6 +109,8 @@ class CommodityContentTableViewController: UITableViewController {
             else
             {
                 documentRef.setData(["id":self.documentId], completion: { (error) in
+                    self.saveBtn.setTitle("已收藏", for: UIControl.State.normal)
+                    
                     let alert=UIAlertController(title: "", message: "收藏成功", preferredStyle: .alert)
                     let action=UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(action)
@@ -111,6 +127,8 @@ class CommodityContentTableViewController: UITableViewController {
             if document!.exists
             {
                 documentRef.delete(completion: { (error) in
+                    self.followBtn.setTitle("追蹤", for: UIControl.State.normal)
+                    
                     let alert=UIAlertController(title: "", message: "取消追蹤", preferredStyle: .alert)
                     let action=UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(action)
@@ -121,6 +139,8 @@ class CommodityContentTableViewController: UITableViewController {
             else
             {
                 documentRef.setData(["id":self.documentId], completion: { (error) in
+                    self.followBtn.setTitle("已追蹤", for: UIControl.State.normal)
+                    
                     let alert=UIAlertController(title: "", message: "追蹤成功", preferredStyle: .alert)
                     let action=UIAlertAction(title: "OK", style: .default, handler: nil)
                     alert.addAction(action)
@@ -136,7 +156,6 @@ class CommodityContentTableViewController: UITableViewController {
         Firestore.firestore().collection("user").document(username).getDocument { (document, error) in
             Firestore.firestore().collection("commodity").document(self.documentId).collection("comment").addDocument(data: ["username":self.username,"comment":self.comment.text,"image":document?.get("image") as! String]) { (error) in
                 self.comment.text=""
-                self.vc.commentTableView.reloadData()
                 self.vc.viewWillAppear(true)
                 
                 let alert=UIAlertController(title: "", message: "留言成功", preferredStyle: .alert)
@@ -171,6 +190,7 @@ class CommodityContentTableViewController: UITableViewController {
                             let alert=UIAlertController(title: "", message: "下單成功", preferredStyle: .alert)
                             let action=UIAlertAction(title: "OK", style: .default, handler: nil)
                             alert.addAction(action)
+                            self.viewWillAppear(true)
                             
                             self.present(alert, animated: true, completion: nil)
                         })
