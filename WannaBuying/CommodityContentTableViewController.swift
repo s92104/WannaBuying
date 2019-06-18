@@ -20,6 +20,7 @@ class CommodityContentTableViewController: UITableViewController {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var saleUsername: UILabel!
     @IBOutlet weak var comment: UITextField!
+    @IBOutlet weak var saveBtn: UIButton!
     
     var username=""
     var documentId=""
@@ -38,6 +39,7 @@ class CommodityContentTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        var view=0
         Firestore.firestore().collection("commodity").document(documentId).getDocument { (document, error) in
             self.saleUsername.text=document?.get("username") as! String
             self.titleLabel.text=document?.get("title") as! String
@@ -57,16 +59,18 @@ class CommodityContentTableViewController: UITableViewController {
             {
                 self.image.image=UIImage(named: "uploadimage")
             }
+            //View+1
+            Firestore.firestore().collection("commodity").document(self.documentId).updateData(["view":(document?.get("view") as! Int)+1])
         }
         //Save
         Firestore.firestore().collection("user").document(username).collection("save").document(documentId).getDocument { (document, error) in
             if document!.exists
             {
-                print("Yes")
+                self.saveBtn.titleLabel!.text="已收藏"
             }
             else
             {
-                print("NO")
+                self.saveBtn.titleLabel!.text="收藏"
             }
         }
     }

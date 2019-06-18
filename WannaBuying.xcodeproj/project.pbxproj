@@ -21,6 +21,8 @@
 		B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */; };
 		B12C3E6F22A3E5AE00A6D943 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */; };
 		B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B15C41B2229C21BB00AC8618 /* LoginViewController.swift */; };
+		B184D22E22B8F68600B42F48 /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184D22D22B8F68600B42F48 /* OrderViewController.swift */; };
+		B184D23022B8F6CE00B42F48 /* OrderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B184D22F22B8F6CE00B42F48 /* OrderTableViewCell.swift */; };
 		B1A9729422B272E20084AA0D /* CommodityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A9729322B272E20084AA0D /* CommodityCollectionViewCell.swift */; };
 		B1A9729822B3E1440084AA0D /* CommodityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A9729722B3E1440084AA0D /* CommodityViewController.swift */; };
 		B1A9729C22B4F9650084AA0D /* CommodityContentTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A9729B22B4F9650084AA0D /* CommodityContentTableViewController.swift */; };
@@ -30,6 +32,8 @@
 		B1ACBAE922B6641A00BBAA20 /* FollowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAE822B6641A00BBAA20 /* FollowTableViewCell.swift */; };
 		B1ACBAEB22B66A2B00BBAA20 /* SaveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAEA22B66A2B00BBAA20 /* SaveViewController.swift */; };
 		B1ACBAED22B66B3000BBAA20 /* SaveTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAEC22B66B3000BBAA20 /* SaveTableViewCell.swift */; };
+		B1ACBAEF22B8D52000BBAA20 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAEE22B8D52000BBAA20 /* HomeTableViewCell.swift */; };
+		B1ACBAF122B8D52000BBAA20 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1ACBAF022B8D52000BBAA20 /* HomeViewController.swift */; };
 		B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */; };
 		B1CE907722B64FF0003190B3 /* MyCommodityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CE907622B64FF0003190B3 /* MyCommodityTableViewCell.swift */; };
 		B1CE907922B65888003190B3 /* MyCommodityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CE907822B65888003190B3 /* MyCommodityViewController.swift */; };
@@ -77,6 +81,8 @@
 		B1278E882276D7FF007C5CFA /* SaleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaleTableViewController.swift; sourceTree = "<group>"; };
 		B12C3E6E22A3E5AE00A6D943 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		B15C41B2229C21BB00AC8618 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B184D22D22B8F68600B42F48 /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		B184D22F22B8F6CE00B42F48 /* OrderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderTableViewCell.swift; sourceTree = "<group>"; };
 		B1A9729322B272E20084AA0D /* CommodityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityCollectionViewCell.swift; sourceTree = "<group>"; };
 		B1A9729722B3E1440084AA0D /* CommodityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityViewController.swift; sourceTree = "<group>"; };
 		B1A9729B22B4F9650084AA0D /* CommodityContentTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommodityContentTableViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +92,8 @@
 		B1ACBAE822B6641A00BBAA20 /* FollowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowTableViewCell.swift; sourceTree = "<group>"; };
 		B1ACBAEA22B66A2B00BBAA20 /* SaveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveViewController.swift; sourceTree = "<group>"; };
 		B1ACBAEC22B66B3000BBAA20 /* SaveTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveTableViewCell.swift; sourceTree = "<group>"; };
+		B1ACBAEE22B8D52000BBAA20 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		B1ACBAF022B8D52000BBAA20 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B1AE0C5E229575C3003C4BA0 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B1CE907622B64FF0003190B3 /* MyCommodityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommodityTableViewCell.swift; sourceTree = "<group>"; };
 		B1CE907822B65888003190B3 /* MyCommodityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCommodityViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +168,10 @@
 			children = (
 				B1090FA32275DF48003AA3DD /* AppDelegate.swift */,
 				B1090FA72275DF48003AA3DD /* Main.storyboard */,
+				B184D22F22B8F6CE00B42F48 /* OrderTableViewCell.swift */,
+				B184D22D22B8F68600B42F48 /* OrderViewController.swift */,
+				B1ACBAF022B8D52000BBAA20 /* HomeViewController.swift */,
+				B1ACBAEE22B8D52000BBAA20 /* HomeTableViewCell.swift */,
 				B1ACBAEC22B66B3000BBAA20 /* SaveTableViewCell.swift */,
 				B1ACBAEA22B66A2B00BBAA20 /* SaveViewController.swift */,
 				B1ACBAE822B6641A00BBAA20 /* FollowTableViewCell.swift */,
@@ -463,6 +475,7 @@
 				B1A972A422B538150084AA0D /* CommodityCommentTableViewController.swift in Sources */,
 				B15C41B3229C21BB00AC8618 /* LoginViewController.swift in Sources */,
 				B1AE0C5F229575C4003C4BA0 /* TabBarController.swift in Sources */,
+				B1ACBAEF22B8D52000BBAA20 /* HomeTableViewCell.swift in Sources */,
 				B1277809229E971B005E6CDA /* SignupViewController.swift in Sources */,
 				B1ACBAEB22B66A2B00BBAA20 /* SaveViewController.swift in Sources */,
 				B1090FA42275DF48003AA3DD /* AppDelegate.swift in Sources */,
@@ -471,7 +484,10 @@
 				B1A9729822B3E1440084AA0D /* CommodityViewController.swift in Sources */,
 				B1ACBAE922B6641A00BBAA20 /* FollowTableViewCell.swift in Sources */,
 				B1278E892276D7FF007C5CFA /* SaleTableViewController.swift in Sources */,
+				B1ACBAF122B8D52000BBAA20 /* HomeViewController.swift in Sources */,
+				B184D23022B8F6CE00B42F48 /* OrderTableViewCell.swift in Sources */,
 				B1A9729422B272E20084AA0D /* CommodityCollectionViewCell.swift in Sources */,
+				B184D22E22B8F68600B42F48 /* OrderViewController.swift in Sources */,
 				B1ACBAE722B6634A00BBAA20 /* FollowViewController.swift in Sources */,
 				B113E3E222B0D7EC007081E0 /* EditProfileViewController.swift in Sources */,
 				B1CE907722B64FF0003190B3 /* MyCommodityTableViewCell.swift in Sources */,

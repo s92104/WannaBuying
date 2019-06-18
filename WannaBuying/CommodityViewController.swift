@@ -50,22 +50,18 @@ class CommodityViewController: UIViewController,UICollectionViewDataSource,UICol
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Commodity", for: indexPath) as! CommodityCollectionViewCell
-        
-        if allDocument.count != 0
+        cell.title.text=titleString[indexPath.row]
+        if imageUrl[indexPath.row] != ""
         {
-            cell.title.text=titleString[indexPath.row]
-            if imageUrl[indexPath.row] != ""
-            {
-                URLSession.shared.dataTask(with: URL(string: imageUrl[indexPath.row])!, completionHandler: { (data, response, error) in
-                    DispatchQueue.main.async {
-                        cell.image.image=UIImage(data: data!)
-                    }
-                }).resume()
-            }
-            else
-            {
-                cell.image.image=UIImage(named: "uploadimage")
-            }
+            URLSession.shared.dataTask(with: URL(string: imageUrl[indexPath.row])!, completionHandler: { (data, response, error) in
+                DispatchQueue.main.async {
+                    cell.image.image=UIImage(data: data!)
+                }
+            }).resume()
+        }
+        else
+        {
+            cell.image.image=UIImage(named: "uploadimage")
         }
         
         return cell

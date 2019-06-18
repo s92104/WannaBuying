@@ -22,6 +22,7 @@ class SaleTableViewController: UITableViewController,UIImagePickerControllerDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
