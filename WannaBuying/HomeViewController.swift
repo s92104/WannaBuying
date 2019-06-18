@@ -26,16 +26,17 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.imageUrl=[]
+        self.titleString=[]
+        self.remainder=[]
+        self.price=[]
+        self.viewCount=[]
         allDocument=[]
         self.tableView.reloadData()
         
         Firestore.firestore().collection("commodity").order(by: "view", descending: true).limit(to: 10).getDocuments { (query, error) in
             self.allDocument=query!.documents
-            self.imageUrl=[]
-            self.titleString=[]
-            self.remainder=[]
-            self.price=[]
-            self.viewCount=[]
+          
             for document in self.allDocument
             {
                 self.imageUrl.append(document.get("image") as! String)

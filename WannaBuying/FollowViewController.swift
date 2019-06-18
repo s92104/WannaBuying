@@ -14,6 +14,7 @@ class FollowViewController: UIViewController,UITableViewDelegate,UITableViewData
     var imageUrl=[String]()
     var saleUsername=[String]()
     var detail=[String]()
+    
     @IBOutlet weak var followTableView: UITableView!
     
     override func viewDidLoad() {

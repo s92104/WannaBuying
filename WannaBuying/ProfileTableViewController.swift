@@ -39,8 +39,8 @@ class ProfileTableViewController: UITableViewController {
                     }
                 }).resume()
             }
-            
         }
+        
     }
     
     @IBAction func myCommodity(_ sender: UIButton) {
