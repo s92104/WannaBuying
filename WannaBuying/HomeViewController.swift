@@ -43,7 +43,7 @@ class HomeViewController: UIViewController,UITableViewDataSource,UITableViewDele
                 self.titleString.append(document.get("title") as! String)
                 self.remainder.append((document.get("remainder") as! NSNumber).stringValue)
                 self.price.append("$" + (document.get("price") as! NSNumber).stringValue)
-                self.viewCount.append("觀看" + (document.get("view") as! NSNumber).stringValue)
+                self.viewCount.append((document.get("view") as! NSNumber).stringValue)
             }
             self.tableView.reloadData()
         }

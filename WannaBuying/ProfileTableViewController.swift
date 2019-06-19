@@ -31,14 +31,20 @@ class ProfileTableViewController: UITableViewController {
         Firestore.firestore().collection("user").document(username.text!).getDocument { (document, error) in
             self.detail.text=document?.get("detail") as? String
             
-            if let url=document?.get("image") as? String
+            let imageUrl=document?.get("image") as! String
+            if imageUrl != ""
             {
-                URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
+                URLSession.shared.dataTask(with: URL(string: imageUrl)!, completionHandler: { (data, response, error) in
                     DispatchQueue.main.async {
                         self.profileImage.image=UIImage(data: data!)
                     }
                 }).resume()
             }
+            else
+            {
+                self.profileImage.image=UIImage(named: "uploadimage")
+            }
+           
         }
         
     }

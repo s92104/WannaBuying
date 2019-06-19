@@ -33,14 +33,18 @@ class EditProfileViewController: UIViewController,UINavigationControllerDelegate
             //讀資料
             if !self.isSelect
             {
-                if let url=document?.get("image") as? String
+                let imageUrlString=document?.get("image") as! String
+                if imageUrlString != ""
                 {
-                    self.imageUrlString=url
-                    URLSession.shared.dataTask(with: URL(string: url)!, completionHandler: { (data, response, error) in
+                    URLSession.shared.dataTask(with: URL(string: imageUrlString)!, completionHandler: { (data, response, error) in
                         DispatchQueue.main.async {
                             self.image.image=UIImage(data: data!)
                         }
                     }).resume()
+                }
+                else
+                {
+                    self.image.image=UIImage(named: "uploadimage")
                 }
             }
             self.password.text=document?.get("password") as? String
